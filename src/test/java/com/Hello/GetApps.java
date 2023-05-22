@@ -40,8 +40,12 @@ public class GetApps {
 
 		for (WebElement ele : maps) {
 			String text = ele.getText();
+
+			System.out.println(text);
+
 			// System.out.println(text);
 			appName.add(text);
+
 		}
 		System.out.println(appName);
 	}
@@ -49,16 +53,16 @@ public class GetApps {
 	public static void main(String[] args) throws IOException {
 		GetApps ga = new GetApps();
 		ga.getAppList();
-		File fileLoc = new File("F:\\Class\\WorkSpace\\Framework\\GitProject\\ExcelFiles\\OutputExcel.xlsx");
+		File fileLoc = new File("D:\\GitRepo\\GitProject\\ExcelFiles\\OutputExcel.xlsx");
 		FileInputStream stream = new FileInputStream(fileLoc);
 		XSSFWorkbook book = new XSSFWorkbook(stream);
-		XSSFSheet sheet = book.createSheet("AppName");
+		XSSFSheet sheet = book.createSheet("AppName1");
 		int appListSize = appName.size();
-		
+
 		for (int i = 0; i < appListSize; i++) {
 			XSSFRow createRow = sheet.createRow(i);
 			XSSFCell createCell = createRow.createCell(0);
-			//createCell.setCellType(CellType.STRING);
+			// createCell.setCellType(CellType.STRING);
 			createCell.setCellValue(appName.get(i));
 		}
 		FileOutputStream fileOutputStream = new FileOutputStream(fileLoc);
