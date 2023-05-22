@@ -29,6 +29,7 @@ public class GetApps {
 		for (WebElement ele : maps) {
 			String text = ele.getText();
 			System.out.println(text);
+
 		}
 	}
 }
