@@ -47,7 +47,7 @@ public class GetApps {
 			appName.add(text);
 
 		}
-		System.out.println(appName);
+	//	System.out.println(appName);
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -56,7 +56,7 @@ public class GetApps {
 		File fileLoc = new File("D:\\GitRepo\\GitProject\\ExcelFiles\\OutputExcel.xlsx");
 		FileInputStream stream = new FileInputStream(fileLoc);
 		XSSFWorkbook book = new XSSFWorkbook(stream);
-		XSSFSheet sheet = book.createSheet("AppName1");
+		XSSFSheet sheet = book.createSheet("AppName2");
 		int appListSize = appName.size();
 
 		for (int i = 0; i < appListSize; i++) {
