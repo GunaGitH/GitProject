@@ -24,11 +24,11 @@ public class gogleOption {
 	public static void main(String[] args) throws IOException {
 		String projectPath = System.getProperty("user.dir");
 		System.out.println("projectPath->"+projectPath);
-		File fileLoc = new File(projectPath+"\\\\ExcelFiles\\\\OutputExcel.xlsx");
+		File fileLoc = new File(projectPath+"\\ExcelFiles\\OutputExcel.xlsx");
 		System.out.println("fileLoc->"+fileLoc);
 		FileInputStream stream = new FileInputStream(fileLoc);
 		XSSFWorkbook book = new XSSFWorkbook(stream);
-		XSSFSheet sheet = book.createSheet("AppName1");
+		XSSFSheet sheet = book.createSheet("AppName8");
 		WebDriverManager.edgedriver().setup();
 		WebDriver driver = new EdgeDriver();
 		driver.get("https://www.google.com/");
