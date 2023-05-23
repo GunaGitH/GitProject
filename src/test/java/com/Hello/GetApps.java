@@ -23,6 +23,7 @@ public class GetApps {
 
 	static WebDriver driver;
 	static List<String> appName = new ArrayList<String>();
+	static List<WebElement> maps;
 
 	public void getAppList() {
 		driver = new ChromeDriver();
@@ -36,18 +37,18 @@ public class GetApps {
 		WebElement iframe = driver.findElement(By.name("app"));
 		driver.switchTo().frame(iframe);
 
-		List<WebElement> maps = driver.findElements(By.xpath("//ul[@class='ngVsM u4RcUd']"));
+		maps = driver.findElements(By.xpath("//ul[@class='ngVsM u4RcUd']"));
 
-		for (WebElement ele : maps) {
-			String text = ele.getText();
-
-			System.out.println(text);
-
-			// System.out.println(text);
-			appName.add(text);
-
-		}
-	//	System.out.println(appName);
+		// for (WebElement ele : maps) {
+		// String text = ele.getText();
+		//
+		// System.out.println(text);
+		//
+		// // System.out.println(text);
+		// appName.add(text);
+		//
+		// }
+		// System.out.println(appName);
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -56,14 +57,17 @@ public class GetApps {
 		File fileLoc = new File("D:\\GitRepo\\GitProject\\ExcelFiles\\OutputExcel.xlsx");
 		FileInputStream stream = new FileInputStream(fileLoc);
 		XSSFWorkbook book = new XSSFWorkbook(stream);
-		XSSFSheet sheet = book.createSheet("AppName2");
-		int appListSize = appName.size();
+		XSSFSheet sheet = book.createSheet("AppName5");
+		// int appListSize = appName.size();
 
-		for (int i = 0; i < appListSize; i++) {
+		for (int i = 0; i < maps.size(); i++) {
+			WebElement ele = maps.get(i);
+			String text = ele.getText();
+			System.out.println(text);
 			XSSFRow createRow = sheet.createRow(i);
 			XSSFCell createCell = createRow.createCell(0);
 			// createCell.setCellType(CellType.STRING);
-			createCell.setCellValue(appName.get(i));
+			createCell.setCellValue(text);
 		}
 		FileOutputStream fileOutputStream = new FileOutputStream(fileLoc);
 		book.write(fileOutputStream);
